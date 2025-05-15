@@ -3,7 +3,7 @@
 
 A lightweight, configurable **PyInstaller wrapper** for Python developers who want to package their scripts into standalone executables using Python code instead of CLI.
 
-> Part of the Anvil Desktop Project  
+> Part of the Anvil Desktop Project  (unofficial)
 > Author: [its-me-abi](https://github.com/its-me-abi)  
 > Date: May 14, 2025
 
