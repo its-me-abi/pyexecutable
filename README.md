@@ -20,7 +20,8 @@ A lightweight, configurable **PyInstaller wrapper** for Python developers who wa
 - Clean builds and custom PyInstaller flags
 
 ---
-
+## 🤝 Documentation
+[https://github.com/its-me-abi/pyexecutable/blob/main/documentation.md](https://github.com/its-me-abi/pyexecutable)  
 ## 🛠 Installation
 
 Install PyInstaller if not already installed:
