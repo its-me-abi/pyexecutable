@@ -23,7 +23,7 @@ This simplifies packaging Python scripts into executables while supporting advan
 
 ## 🧱 Class: `builder`
 
-### Constructor
+#### Constructor
 
 ```python
 builder(script_path, dist_path="./dist", build_path="./build")
@@ -37,52 +37,52 @@ builder(script_path, dist_path="./dist", build_path="./build")
 
 ## 🔧 Configuration Methods
 
-### `set_confirm(val: bool)`
+#### `set_confirm(val: bool)`
 - Enables or disables the `--noconfirm` flag.
 
-### `set_console(val: bool)`
+#### `set_console(val: bool)`
 - Set whether the application runs with a console window (`True`) or as a GUI app (`False`).
 
-### `set_icon(val: str)`
+#### `set_icon(val: str)`
 - Specify a `.ico` file to use as the application icon.
 
-### `set_onedir(val: bool)`
+#### `set_onedir(val: bool)`
 - `True` for one-directory mode (`--onedir`), `False` for one-file mode (`--onefile`).
 
-### `set_loglevel(val: str)`
+#### `set_loglevel(val: str)`
 - Set PyInstaller log level (`INFO`, `DEBUG`, `ERROR`, etc.).
 
-### `set_clean(val: bool)`
+#### `set_clean(val: bool)`
 - Include `--clean` flag to remove previous build cache.
 
-### `setr_extra_args(args: list[str])`
+#### `setr_extra_args(args: list[str])`
 - Append additional raw arguments to the PyInstaller command.
 
-### `set_data_folders(src: str, dest: str)`
+#### `set_data_folders(src: str, dest: str)`
 - Map data folders to bundle into the executable.  
   The `src` is the local path, `dest` is the target path within the package.
 
-### `set_hidden_import(name: str)`
+#### `set_hidden_import(name: str)`
 - Add a module name for PyInstaller to include via `--hidden-import`.
 
 ---
 
 ## 🔍 Internal Helpers
 
-### `get_data_folders() -> list[str]`
+#### `get_data_folders() -> list[str]`
 - Returns properly formatted `--add-data` strings for all registered folders.
 
-### `get_hidden_Import() -> list[str]`
+#### `get_hidden_Import() -> list[str]`
 - Returns all `--hidden-import` entries.
 
-### `get_logLevel() -> list[str]`
+#### `get_logLevel() -> list[str]`
 - Returns `--log-level=<level>`
 
 ---
 
 ## 🧮 PyInstaller Command
 
-### `get_full_command_list() -> list[str]`
+#### `get_full_command_list() -> list[str]`
 - Constructs the full list of arguments to pass to PyInstaller, including:
   - Script path
   - Build and dist paths
@@ -98,7 +98,7 @@ builder(script_path, dist_path="./dist", build_path="./build")
 
 ## 🚀 Build Method
 
-### `build_executable() -> bool`
+#### `build_executable() -> bool`
 - Runs PyInstaller with the assembled argument list.
 - Returns `True` on success; logs warning and returns `False` on failure.
 
