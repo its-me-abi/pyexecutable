@@ -70,7 +70,7 @@ else:
 pyexecutable/
 ├── pyexecutable.py        # Main module
 ├── README.md              # This file
-├── pyexecutable_documentation.md  # Full API documentation
+├── documentation.md       # Full API documentation
 └── dist/                  # Build output
 ```
 
@@ -78,7 +78,7 @@ pyexecutable/
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please fork and submit a pull request on [GitHub](https://github.com/its-me-abi).
+Contributions are welcome! Please fork and submit a pull request on [GitHub](https://github.com/its-me-abi/pyexecutable).
 
 ---
 
