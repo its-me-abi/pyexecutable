@@ -1,2 +1,87 @@
-# pyexecutable
-pyinstaller wrapper that generate executable from py file programmattically via api
+
+# PyExecutable
+
+A lightweight, configurable **PyInstaller wrapper** for Python developers who want to package their scripts into standalone executables using Python code instead of CLI.
+
+> Part of the Anvil Desktop Project  
+> Author: [its-me-abi](https://github.com/its-me-abi)  
+> Date: May 14, 2025
+
+---
+
+## 📦 What is this?
+
+`pyexecutable.py` provides a `builder` class to programmatically invoke PyInstaller with custom configurations, supporting:
+
+- One-file / one-dir builds
+- Hidden imports
+- Data folder mapping
+- Custom icons and console toggling
+- Clean builds and custom PyInstaller flags
+
+---
+
+## 🛠 Installation
+
+Install PyInstaller if not already installed:
+
+```bash
+pip install pyinstaller
+```
+
+---
+
+## 🚀 Quick Start
+
+```python
+from pyexecutable import builder
+
+b = builder("your_script.py")
+b.set_console(False)
+b.set_onedir(True)
+b.set_icon("icon.ico")
+b.set_loglevel("DEBUG")
+b.set_data_folders("assets", "assets")
+b.set_hidden_import("your_dynamic_module")
+
+if b.build_executable():
+    print("✅ Build succeeded!")
+else:
+    print("❌ Build failed.")
+```
+
+---
+
+## 🔧 Features
+
+- ✅ No CLI required
+- 📂 Cross-platform data folder support
+- 🪄 Hidden import handling
+- 🖼 Set icon with `.ico` file
+- 🧵 Toggle between GUI and console mode
+- 🔍 Control build verbosity via log levels
+- 🧹 Optional clean builds
+
+---
+
+## 📂 Project Structure
+
+```
+pyexecutable/
+├── pyexecutable.py        # Main module
+├── README.md              # This file
+├── pyexecutable_documentation.md  # Full API documentation
+└── dist/                  # Build output
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork and submit a pull request on [GitHub](https://github.com/its-me-abi).
+
+---
+
+## 🪪 License
+
+MIT License – See `LICENSE.md` for details.
