@@ -29,7 +29,7 @@ Install PyInstaller if not already installed:
 ```bash
 pip install pyinstaller
 ```
-download by git comand (or download by browser as zip and extract )
+download this proejct by git comand (or download by browser as zip and extract )
 ```
 git clone https://github.com/its-me-abi/pyexecutable.git
 ```
