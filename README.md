@@ -76,7 +76,6 @@ pyexecutable/
 ├── pyexecutable.py        # Main module
 ├── README.md              # This file
 ├── documentation.md       # Full API documentation
-└── dist/                  # Build output
 ```
 
 ---
