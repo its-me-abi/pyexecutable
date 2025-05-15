@@ -54,7 +54,7 @@ class builder:
     def set_clean(self,args):
         self.clean = args
 
-    def setr_extra_args(self,args):
+    def set_extra_args(self,args):
         self.extra = args
 
     def set_data_folders(self,src,dest):
@@ -85,8 +85,7 @@ class builder:
                 comand += ["--workpath",self.build_path]
             if self.dist_path:
                 comand += ["--distpath", self.dist_path]
-            if self.extra:
-                comand+=self.extra
+
             if self.clean:
                 comand += ["--clean"]
             comand+= self.get_logLevel()
@@ -102,6 +101,8 @@ class builder:
                 comand += ["--noconsole"]
             if self.confirm:
                 comand += ["--noconfirm"]
+            if self.extra:
+                comand+=self.extra
 
             logger.info( "full command is = %s "%comand )
             return comand
