@@ -11,7 +11,9 @@ A lightweight, configurable **PyInstaller wrapper** for Python developers who wa
 
 ## 📦 What is this?
 
-`pyexecutable.py` provides a `builder` class to programmatically invoke PyInstaller with custom configurations, supporting:
+`pyexecutable.py` provides a `builder` class to programmatically invoke PyInstaller with custom configurations,  
+by doing it we can turn a python script into a executable file   
+supporting:
 
 - One-file / one-dir builds
 - Hidden imports
