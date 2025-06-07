@@ -50,11 +50,13 @@ b.set_icon("icon.ico")
 b.set_loglevel("DEBUG")
 b.set_data_folders("assets", "assets")
 b.set_hidden_import("your_dynamic_module")
+# b.set_extra_args("--heloo its_extra_argument")  # you can set more argumnts as string.only use when functionality not available by api
 
 if b.build_executable():
     print("✅ Build succeeded!")
 else:
     print("❌ Build failed.")
+
 ```
 
 ---
