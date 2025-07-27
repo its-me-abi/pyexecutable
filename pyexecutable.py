@@ -1,12 +1,11 @@
 import PyInstaller.__main__
 import sys
 import logging
-import argparse
 
 """
-pyinstaller wrapper for programmatically generating executable
+pyinstaller wrapper for programmatically generating executable from py file
 14/5/2025  github.com/its-me-abi
-written as part of anvil desktop project
+written as part of unofficial anvil desktop project
 """
 
 logger = logging.getLogger(__name__)
@@ -25,6 +24,11 @@ class builder:
         self.hidden_import = []
         self.icon = None
         self.console = True
+        self.name = ""
+        self.collect_all = []
+
+    def set_name(self,val):
+        self.name = val
 
     def set_confirm(self,val):
         self.confirm = val
@@ -76,6 +80,16 @@ class builder:
         level = f"--log-level={self.loglevel}"
         return [level]
 
+    def get_collect_all(self):
+        all = []
+        for one_package in self.collect_all:
+            one_argument = ["--collect-all",one_package]
+            all += one_argument
+        return all
+
+    def set_collect_all(self,packagename):
+        self.collect_all.append(packagename)
+
     def get_full_command_list(self):
         if self.script_path:
             comand = [self.script_path]
@@ -103,7 +117,10 @@ class builder:
                 comand += ["--noconfirm"]
             if self.extra:
                 comand+=self.extra
-
+            if self.name:
+                comand += ["--name",self.name]
+            if self.collect_all:
+                comand += self.get_collect_all()
             logger.info( "full command is = %s "%comand )
             return comand
 
@@ -119,5 +136,11 @@ class builder:
 
 if __name__ == "__main__":
     gen = builder("anvil_desktop.py")
+    gen.set_collect_all("anvil_downlink_host")
+    gen.set_collect_all("anvil_downlink_worker")
+    gen.set_collect_all("anvil_downlink_util")
+
     if gen.build_executable():
-        logger.info(" anvil_desktop.exe built with directory ")
+        logger.info(" anvil_desktop.exe built in current working folder  ")
+    else:
+        logger.info("buildig executable failed ")
