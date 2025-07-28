@@ -1,5 +1,5 @@
 
-# PyExecutable
+# pyexecutable_gen
 
 A lightweight, configurable **PyInstaller wrapper** for Python developers who want to package their scripts into standalone executables using Python code instead of CLI.
  
@@ -10,7 +10,7 @@ A lightweight, configurable **PyInstaller wrapper** for Python developers who wa
 
 ## 📦 What is this?
 
-`pyexecutable.py` provides a `builder` class to programmatically invoke PyInstaller with custom configurations,  
+`pyexecutable_gen.py` provides a `builder` class to programmatically invoke PyInstaller with custom configurations,  
 by doing it we can turn a python script into a executable file   
 supporting:
 
@@ -22,7 +22,7 @@ supporting:
 
 ---
 ## 🤝 Documentation
-[https://github.com/its-me-abi/pyexecutable/blob/main/documentation.md](https://github.com/its-me-abi/pyexecutable)  
+[https://github.com/its-me-abi/pyexecutable_gen/blob/main/documentation.md](https://github.com/its-me-abi/pyexecutable_gen)  
 ## 🛠 Installation
 
 Install PyInstaller if not already installed:
@@ -32,7 +32,7 @@ pip install pyinstaller
 ```
 download this project by git comand (or download by browser as zip and extract )
 ```
-git clone https://github.com/its-me-abi/pyexecutable.git
+git clone https://github.com/its-me-abi/pyexecutable_gen.git
 ```
 
 ---
@@ -40,7 +40,7 @@ git clone https://github.com/its-me-abi/pyexecutable.git
 ## 🚀 Quick Start
 
 ```python
-from pyexecutable import builder
+from pyexecutable_gen import builder
 
 b = builder("your_script.py")
 b.set_console(False)
@@ -50,7 +50,7 @@ b.set_loglevel("DEBUG")
 b.set_data_folders("assets", "assets")
 b.set_hidden_import("your_dynamic_module")
 # b.set_extra_args("--heloo its_extra_argument")  # you can set more argumnts as string.only use when functionality not available by api
-
+b.set_collect_all("a_big_package_with_submodules")
 if b.build_executable():
     print("✅ Build succeeded!")
 else:
@@ -75,8 +75,8 @@ else:
 ## 📂 Project Structure
 
 ```
-pyexecutable/
-├── pyexecutable.py        # Main module
+pyexecutable_gen/
+├── pyexecutable_gen.py        # Main module
 ├── README.md              # This file
 ├── documentation.md       # Full API documentation
 ```
@@ -85,7 +85,7 @@ pyexecutable/
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please fork and submit a pull request on [GitHub](https://github.com/its-me-abi/pyexecutable).
+Contributions are welcome! Please fork and submit a pull request on [GitHub](https://github.com/its-me-abi/pyexecutable_gen).
 
 ---
 
