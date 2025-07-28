@@ -22,15 +22,14 @@ supporting:
 
 ---
 ## 🤝 Documentation
-[https://github.com/its-me-abi/pyexecutable_gen/blob/main/documentation.md](https://github.com/its-me-abi/pyexecutable_gen)  
+[here is documentation](https://github.com/its-me-abi/pyexecutable_gen)  
 ## 🛠 Installation
 
-Install PyInstaller if not already installed:
 
 ```bash
-pip install pyinstaller
+pip install pyexecutable_gen
 ```
-download this project by git comand (or download by browser as zip and extract )
+or download this project by git comand (or download by browser as zip and extract )
 ```
 git clone https://github.com/its-me-abi/pyexecutable_gen.git
 ```
@@ -70,24 +69,10 @@ else:
 - 🔍 Control build verbosity via log levels
 - 🧹 Optional clean builds
 
----
-
-## 📂 Project Structure
-
-```
-pyexecutable_gen/
-├── pyexecutable_gen.py        # Main module
-├── README.md              # This file
-├── documentation.md       # Full API documentation
-```
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome! Please fork and submit a pull request on [GitHub](https://github.com/its-me-abi/pyexecutable_gen).
-
----
 
 ## 🪪 License
 

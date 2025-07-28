@@ -2,6 +2,7 @@ import PyInstaller.__main__
 import sys
 import logging
 
+
 """
 pyinstaller wrapper for programmatically generating executable from py file
 14/5/2025  github.com/its-me-abi
