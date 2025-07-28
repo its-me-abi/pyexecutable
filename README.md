@@ -22,7 +22,7 @@ supporting:
 
 ---
 ## 🤝 Documentation
-[here is documentation](https://github.com/its-me-abi/pyexecutable_gen)  
+[ full documentation is available in wiki](https://github.com/its-me-abi/pyexecutable/wiki)  
 ## 🛠 Installation
 
 
