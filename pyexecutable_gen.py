@@ -2,7 +2,6 @@ import PyInstaller.__main__
 import sys
 import logging
 
-
 """
 pyinstaller wrapper for programmatically generating executable from py file
 14/5/2025  github.com/its-me-abi
@@ -136,11 +135,15 @@ class builder:
 
 if __name__ == "__main__":
     gen = builder("anvil_desktop.py")
+    gen.set_data_folders("MyTodoList","MyTodoList")
     gen.set_collect_all("anvil_downlink_host")
     gen.set_collect_all("anvil_downlink_worker")
     gen.set_collect_all("anvil_downlink_util")
-
-    if gen.build_executable():
-        logger.info(" anvil_desktop.exe built in current working folder  ")
-    else:
+    gen.set_collect_all("anvil_app_server")
+    try:
+       if gen.build_executable():
+           logger.info(" anvil_desktop.exe built in current working folder  ")
+       else:
+           logger.info("buildig executable failed ")
+    except:
         logger.info("buildig executable failed ")
