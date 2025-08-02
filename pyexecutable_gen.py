@@ -1,6 +1,7 @@
 import PyInstaller.__main__
-import sys
+import sys,os
 import logging
+
 
 """
 pyinstaller wrapper for programmatically generating executable from py file
@@ -66,7 +67,7 @@ class builder:
 
     def get_data_folders(self):
         data_folders = []
-        if sys.platform == "windows":
+        if os.name == "nt":
             sep = ";"
         else:
             sep = ":"
@@ -135,15 +136,11 @@ class builder:
 
 if __name__ == "__main__":
     gen = builder("anvil_desktop.py")
-    gen.set_data_folders("MyTodoList","MyTodoList")
     gen.set_collect_all("anvil_downlink_host")
     gen.set_collect_all("anvil_downlink_worker")
     gen.set_collect_all("anvil_downlink_util")
-    gen.set_collect_all("anvil_app_server")
-    try:
-       if gen.build_executable():
-           logger.info(" anvil_desktop.exe built in current working folder  ")
-       else:
-           logger.info("buildig executable failed ")
-    except:
+
+    if gen.build_executable():
+        logger.info(" anvil_desktop.exe built in current working folder  ")
+    else:
         logger.info("buildig executable failed ")
