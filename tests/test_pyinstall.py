@@ -21,7 +21,7 @@ class Test_comands_static(unittest.TestCase):
 
 class Test_comands_dynamic(unittest.TestCase):
     def test_exe_file_name(self):
-        script_path = str(Path("testfile.py").resolve())
+        script_path = str(Path(__file__).parent / "testfile.py" )
         ex = exe.builder(script_path)
         ex.set_loglevel("ERROR")
         ex.set_name("XXXapp")
@@ -30,7 +30,8 @@ class Test_comands_dynamic(unittest.TestCase):
         self.assertEqual( Path(exepath).name , "XXXapp.exe", "custom name set by api and prodcued file is different")
 
     def test_exe_file_and_folder(self):
-        script_path = str(Path("testfile.py").resolve())
+
+        script_path = str(Path(__file__).parent / "testfile.py" )
         ex = exe.builder(script_path)
         ex.set_loglevel("ERROR")
         folder = ex.get_executable_data_folder()
