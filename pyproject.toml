@@ -7,7 +7,7 @@ Homepage = "https://github.com/its-me-abi/pyexecutable_gen"
 
 [project]
 name = "pyexecutable_gen"
-version = "0.0.2"
+version = "0.0.3"
 description = "A Python wrapper for PyInstaller to programmatically generate an executable from a Python script"
 authors = [
 	{ name = "keralaboy", email = "keralaboypypi@keralaboy.anonaddy.com" }

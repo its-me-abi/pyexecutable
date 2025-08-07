@@ -1,7 +1,7 @@
 import PyInstaller.__main__
 import sys,os
+from pathlib import Path
 import logging
-
 
 """
 pyinstaller wrapper for programmatically generating executable from py file
@@ -12,7 +12,7 @@ written as part of unofficial anvil desktop project
 logger = logging.getLogger(__name__)
 
 class builder:
-    def __init__( self, script_path, dist_path = "./dist",build_path = "./build"):
+    def __init__( self, script_path, dist_path = "",build_path = ""):
         self.script_path = script_path
         self.build_path = build_path
         self.dist_path = dist_path
@@ -21,7 +21,7 @@ class builder:
         self.extra = []
         self.clean = False
         self.loglevel = "INFO"
-        self.onedir = True
+        self.onedir_or_onefile = "--onedir" # pyinstaller choose onedir as default
         self.hidden_import = []
         self.icon = None
         self.console = True
@@ -51,7 +51,12 @@ class builder:
         self.hidden_import.append(name)
 
     def set_onedir(self,val):
-        self.onedir = val
+        if val:
+           self.onedir_or_onefile = "--onedir"
+
+    def set_onefile(self,val):
+        if val:
+           self.onedir_or_onefile = "--onefile"
 
     def set_loglevel(self, args):
         self.loglevel = args
@@ -104,7 +109,7 @@ class builder:
             if self.clean:
                 comand += ["--clean"]
             comand+= self.get_logLevel()
-            if self.onedir:
+            if self.onedir_or_onefile == "--onedir":
                 comand += ["--onedir"]
             else:
                 comand += ["--onefile"]
@@ -122,8 +127,33 @@ class builder:
                 comand += ["--name",self.name]
             if self.collect_all:
                 comand += self.get_collect_all()
-            logger.info( "full command is = %s "%comand )
+            logger.info( "pyinstaller full command is = %s "%comand )
             return comand
+        else:
+            raise ValueError("nothing is provided as script path")
+
+    def get_executable_data_folder(self):
+        "when --ondir option is enabled there willbe a foldner named internal it contains data of users."
+        val = Path ( self.get_executable_path() ).parent / "_internal"
+        return val
+
+    def get_executable_path(self):
+        script_path = Path(self.script_path)
+        dist_path = Path(self.dist_path).absolute() if self.dist_path else Path("dist").absolute()
+        exe_name = self.name if self.name else script_path.stem
+        exe_file = Path(f"{exe_name}.exe")
+        if self.onedir_or_onefile == "--onedir":
+            exe_dir = dist_path / exe_name
+            if os.name == "nt":
+                exe_file = exe_dir / f"{exe_name}.exe"
+            else:
+                exe_file = exe_dir / exe_name
+        else:
+            if os.name == "nt":
+                exe_file = dist_path / f"{exe_name}.exe"
+            else:
+                exe_file = dist_path / exe_name
+        return str(exe_file)
 
     def build_executable(self):
         try:
@@ -132,15 +162,5 @@ class builder:
             return True
 
         except Exception as e:
-            logger.warning("Build failed with error: " , e)
+            logger.warning(f"pyintsaller Build failed with error: {e}" )
 
-if __name__ == "__main__":
-    gen = builder("anvil_desktop.py")
-    gen.set_collect_all("anvil_downlink_host")
-    gen.set_collect_all("anvil_downlink_worker")
-    gen.set_collect_all("anvil_downlink_util")
-
-    if gen.build_executable():
-        logger.info(" anvil_desktop.exe built in current working folder  ")
-    else:
-        logger.info("buildig executable failed ")

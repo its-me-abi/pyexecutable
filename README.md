@@ -42,7 +42,7 @@ git clone https://github.com/its-me-abi/pyexecutable_gen.git
 from pyexecutable_gen import builder
 
 b = builder("your_script.py")
-b.set_console(False)
+b.set_console(True)
 b.set_onedir(True)
 b.set_icon("icon.ico")
 b.set_loglevel("DEBUG")
@@ -52,6 +52,7 @@ b.set_hidden_import("your_dynamic_module")
 b.set_collect_all("a_big_package_with_submodules")
 if b.build_executable():
     print("✅ Build succeeded!")
+    print(f"✅ Build executable path is {b.get_executable_path()}")
 else:
     print("❌ Build failed.")
 
