@@ -19,6 +19,7 @@ jobs:
     - name: Run testcase
       id: unittest_cases
       run: |
+          python -m pip install pyinstaller
           python -m unittest discover tests
 
     - name: Build and publish to pypi
